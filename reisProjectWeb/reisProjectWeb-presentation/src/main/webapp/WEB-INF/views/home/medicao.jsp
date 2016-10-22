@@ -25,15 +25,16 @@
 				
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--4-col">
-						<label class="h4-small">Tipo de MediÁ„o</label>
+						<label class="h4-small">Tipo de Medi√ß√£o</label>
 						<form:input path="tipo_dispositivo" type="text" class="form-control"
 							id="tipoDispositivo" cssStyle="display: none;" />
 						<div class="form-group">
 							<select data-toggle="select" id="tipo"
 								class="form-control select select-primary select-lg">						
-								<option value="0">Oximetro</option>
-								<option value="1">BalanÁa</option>
-								<option value="2">Press„o</option>
+								<option value="0">ICG Monitor</option>
+								<option value="1">Balan√ßa</option>
+								<option value="2">Oximetro</option>
+								<option value="3">Pressao</option>
 							</select>
 						</div>
 					</div>
@@ -55,11 +56,42 @@
 		<div class="col-md-6">
 			<c:if test="${tipoDispositivo != null}">
 				<div class="col-md-12">	 
-					<div class="h6"> MediÁ„o Cadastrada</div> <hr>
+					<div class="h6"> Medi√ß√£o Cadastrada</div> <hr>
 				</div>
 			</c:if>
 			
-			<c:if test="${tipoDispositivo == 1}"> <!--  BalanÁa -->
+			<c:if test="${tipoDispositivo == 0}"> <!-- ICG Monitor -->
+		  		<div class="col-md-12">	
+		  			<div class="panel panel-default">
+			  			<div class="panel-body h4-small">
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Freq. Card. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.frequenciaCardiaca}</span> ${icg.frequenciaCardiacaUnidade}</div>
+				  			</div>
+				  				
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Freq. Resp. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.frequenciaRespiratoria}</span> ${icg.frequenciaRespiratoriaUnidade}</div>
+				  			</div>
+				  				
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Deb. Card. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.debitoCardiaco}</span> ${icg.debitoCardiacoUnidade}</div>
+				  			</div>
+				  			
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Ind. Card. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.indiceCardiaco}</span> ${icg.indiceCardiacoUnidade}</div>
+				  			</div>
+			  			</div>
+			  			<div class="panel-minifooter text-right"> 
+			  				${icg.dataHoraFormatada}
+			  			</div>	  			
+		  			</div>
+		  		</div>
+	  		</c:if>
+			
+			<c:if test="${tipoDispositivo == 1}"> <!--  Balan√ßa -->
 		  		<div class="col-md-12">	
 		  			<div class="panel panel-default">
 			  			<div class="panel-body h4-small">
@@ -85,7 +117,7 @@
 		  		</div>
 	  		</c:if>
 	  		
-	  		<c:if test="${tipoDispositivo == 0}"> <!-- Oximetro -->
+	  		<c:if test="${tipoDispositivo == 2}"> <!-- Oximetro -->
 		  		<div class="col-md-12">
 		  			<div class="panel panel-default">  				
 			  			<div class="panel-body h4-small">
@@ -106,12 +138,12 @@
 		  		</div>
 	  		</c:if>
 	  		
-	  		<c:if test="${tipoDispositivo == 2}"> <!-- press„o -->
+	  		<c:if test="${tipoDispositivo == 3}"> <!-- press√£o -->
 		  		<div class="col-md-12">
 		  			<div class="panel panel-default">
 			  			<div class="panel-body h4-small">
 			  				<div class="col-md-6">
-			  					<div class="reis-verde-NUTES"> Press„o Arterial <div class="reis-hr"></div> </div>
+			  					<div class="reis-verde-NUTES"> Press√£o Arterial <div class="reis-hr"></div> </div>
 			  					<div class="reis-cor-preto text-center"> 
 			  						<span class="h6">${pressao.pressaoSistolica}/${pressao.pressaoDiastolica}</span> ${pressao.pressaoSistolicaUnidade}
 			  					</div>
