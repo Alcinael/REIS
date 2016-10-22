@@ -7,11 +7,22 @@
 			<div class="row">
 				<div class="col-md-12 col-xs-4">  				
 		  			<div class="panel-body reis-img reis-verde-NUTES h4-small text-center">
+		  				<a class="reis-cor-azulEscuro" href="#div_icg" data-toggle="tab" aria-expanded="false" onclick="img_monitorClick()">
+		  					<br>  
+				  			<img class='img-responsive' id="img-monitor" width="90px" height="90px"
+								src='../images/disp_monitor_cor.png' style="margin: auto;"/>
+								ICG Monitor
+						</a>
+					</div>
+				</div>
+				
+				<div class="col-md-12 col-xs-4">  				
+		  			<div class="panel-body reis-img reis-verde-NUTES h4-small text-center">
 		  				<a class="reis-cor-azulEscuro" href="#div_balanca" data-toggle="tab" aria-expanded="false" onclick="img_balancaClick()">
 		  					<br>  
 				  			<img class='img-responsive' id="img-balanca" width="90px" height="90px"
-								src='../images/disp_balanca_cor.png' style="margin: auto;"/>
-								BalanÁa
+								src='../images/disp_balanca.png' style="margin: auto;"/>
+								Balan√ßa
 						</a>
 					</div>
 				</div>
@@ -30,7 +41,7 @@
 		  					<br>  
 				  			<img class='img-responsive' id="img-pressao" width="90px" height="90px"
 								src='../images/disp_pressao.png' style="margin: auto;"/>
-								Press„o
+								Press√£o
 						</a>
 					</div>
 				</div>
@@ -40,9 +51,38 @@
 		<div class="col-md-10">
 			<div class="col-md-12">
 				<div id="myTabContent" class="tab-content">
-		  			<!-- Tabela balanÁa -->
-					<div class="tab-pane fade active in" id="div_balanca">
-		    			<div class="h6 reis-div-top"> HistÛrico de mediÁıes - BalanÁa </div> <hr>
+					<!-- Tabela Monitor -->
+					<div class="tab-pane fade active in" id="div_icg">
+		    			<div class="h6 reis-div-top"> Hist√≥rico de medi√ß√µes - ICG Monitor </div> <hr>
+		    			<div class="col-md-10">		
+							<table class="mdl-data-table mdl-js-data-table">		
+								<thead>
+									<tr style="background-color:#81CFE0; color:#fff">
+										<th style=" color:#fff">Data e Hora</th>
+										<th style=" color:#fff">Frequencia Cardiaca</th>
+										<th style=" color:#fff">Frequencia Respiratoria</th>
+										<th style=" color:#fff">Debito Cardiaco</th>
+										<th style=" color:#fff">Indice Cardiaco</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="icg" varStatus="status" items="${historicoIcg}">
+										<tr>
+											<td>${icg.dataHoraFormatada}</td>
+											<td>${icg.frequenciaCardiaca} ${icg.frequenciaCardiacaUnidade}</td>
+											<td>${icg.frequenciaRespiratoria} ${icg.frequenciaRespiratoriaUnidade}</td>
+											<td>${icg.debitoCardiaco} ${icg.debitoCardiacoUnidade}</td>
+											<td>${icg.indiceCardiaco} ${icg.indiceCardiacoUnidade}</td> 
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+		  			</div>
+					
+		  			<!-- Tabela balan√ßa -->
+					<div class="tab-pane fade" id="div_balanca">
+		    			<div class="h6 reis-div-top"> Hist√≥rico de medi√ß√µes - Balan√ßa </div> <hr>
 		    			<div class="col-md-10">		
 							<table class="mdl-data-table mdl-js-data-table">		
 								<thead>
@@ -69,7 +109,7 @@
 		  			
 		  			<!-- Tabela oximetro -->
 		  			<div class="tab-pane fade" id="div_oximetro">
-		    			<div class="h6 reis-div-top"> HistÛrico de mediÁıes - OxÌmetro de Pulso </div> <hr>
+		    			<div class="h6 reis-div-top"> Hist√≥rico de medi√ß√µes - Ox√≠metro de Pulso </div> <hr>
 		    			<div class="col-md-10">		
 							<table class="mdl-data-table mdl-js-data-table">
 								<thead>
@@ -94,15 +134,15 @@
 		  			
 		  			<!-- Tabela pressao -->		
 		  			<div class="tab-pane fade" id="div_pressao">
-		    			<div class="h6 reis-div-top"> HistÛrico de mediÁıes - Medidor de Press„o Arterial </div> <hr>
+		    			<div class="h6 reis-div-top"> Hist√≥rico de medi√ß√µes - Medidor de Press√£o Arterial </div> <hr>
 		    			<div class="col-md-10">		
 							<table class="mdl-data-table mdl-js-data-table">
 								<thead>
 									<tr style="background-color:#DA4453; color:#fff">
 										<th style=" color:#fff">Data e Hora</th>
-										<th style=" color:#fff">Press„o SistÛlica</th>
-										<th style=" color:#fff">Press„o DiastÛlica</th>
-										<th style=" color:#fff">Press„o MÈdia</th>
+										<th style=" color:#fff">Press√£o Sist√≥lica</th>
+										<th style=" color:#fff">Press√£o Diast√≥lica</th>
+										<th style=" color:#fff">Press√£o M√©dia</th>
 										<th style=" color:#fff">Taxa de Pulso</th>
 									</tr>
 								</thead>
@@ -132,19 +172,29 @@
 <script src="../js/flat-ui-reis/flat-ui-reis.js"></script>
 
 <script>
+	function img_monitorClick() {
+		document.getElementById("img-monitor").src="../images/disp_monitor_cor.png";
+		document.getElementById("img-balanca").src="../images/disp_balanca.png";
+		document.getElementById("img-oximetro").src="../images/disp_oximetro.png";
+		document.getElementById("img-pressao").src="../images/disp_pressao.png";
+	}
+
 	function img_balancaClick() {
+		document.getElementById("img-monitor").src="../images/disp_monitor.png";
 		document.getElementById("img-balanca").src="../images/disp_balanca_cor.png";
 		document.getElementById("img-oximetro").src="../images/disp_oximetro.png";
 		document.getElementById("img-pressao").src="../images/disp_pressao.png";
 	}
 	
 	function img_oximetroClick() {
+		document.getElementById("img-monitor").src="../images/disp_monitor.png";
 		document.getElementById("img-balanca").src="../images/disp_balanca.png";
 		document.getElementById("img-oximetro").src="../images/disp_oximetro_cor.png";
 		document.getElementById("img-pressao").src="../images/disp_pressao.png";
 	}
 	
 	function img_pressaoClick() {
+		document.getElementById("img-monitor").src="../images/disp_monitor.png";
 		document.getElementById("img-balanca").src="../images/disp_balanca.png";
 		document.getElementById("img-oximetro").src="../images/disp_oximetro.png";
 		document.getElementById("img-pressao").src="../images/disp_pressao_cor.png";
