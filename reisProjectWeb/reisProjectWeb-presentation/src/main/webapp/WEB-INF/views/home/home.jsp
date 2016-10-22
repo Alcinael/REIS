@@ -23,7 +23,7 @@
 		  				<div class="col-md-2 reis-verde-NUTES"> Idade: </div>
 		  				<div class="col-md-4 reis-cor-preto"> ${paciente.idade} anos </div>
 		  				 -->
-		  				<div class="col-md-2 reis-verde-NUTES"> Endereço: </div>
+		  				<div class="col-md-2 reis-verde-NUTES"> EndereÃ§o: </div>
 		  				<div class="col-md-10 reis-cor-preto"> &nbsp;${paciente.endereco} </div>
 						
 		  				<div class="col-md-2 reis-verde-NUTES"> </div>
@@ -42,7 +42,7 @@
 	  		<!-- 
 	  		<c:if test="${verificaMedicao == true}">
 		  		<div class="col-md-12">
-					<div class="h6"> Histórico do Paciente </div> <hr>			  			
+					<div class="h6"> HistÃ³rico do Paciente </div> <hr>			  			
 
 					
 		  			<div class="panel panel-default">
@@ -63,16 +63,47 @@
 	  	
 	  	<div class="col-md-6">
 	  		<div class="col-md-12">
-	  			<div class="h6"> Ultimas Medições </div> <hr>
+	  			<div class="h6"> Ultimas MediÃ§Ãµes </div> <hr>
 	  		</div>
 	  		
 	  		<c:if test="${verificaMedicao == false}">
 	  			<div class="col-md-12 text-center">
-		  			<div class="h3-small reis-cor-cinzaClaro"> Nenhuma medição foi adicionada </div>
+		  			<div class="h3-small reis-cor-cinzaClaro"> Nenhuma mediÃ§Ã£o foi adicionada </div>
 		  			<img class='img-responsive' src='../images/dispositivos_bgCinza.png' style="margin: auto;"/>		  			
-		  			<a class="h3-small reis-a reis-cor-cinzaClaro" href="../home/medicao.html"> Adicionar medições </a>		  			
+		  			<a class="h3-small reis-a reis-cor-cinzaClaro" href="../home/medicao.html"> Adicionar mediÃ§Ãµes </a>		  			
 		  		</div>
 	  		
+	  		</c:if>
+	  		
+	  		<c:if test="${icg != null}">
+		  		<div class="col-md-12">	
+		  			<div class="panel panel-default">
+			  			<div class="panel-body h4-small">
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Freq. Card. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.frequenciaCardiaca}</span> ${icg.frequenciaCardiacaUnidade}</div>
+				  			</div>
+				  				
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Freq. Resp. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.frequenciaRespiratoria}</span> ${icg.frequenciaRespiratoriaUnidade}</div>
+				  			</div>
+				  				
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Deb. Card. <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.debitoCardiaco}</span> ${icg.debitoCardiacoUnidade}</div>
+				  			</div>
+				  			
+				  			<div class="col-md-3">
+				  				<div class="reis-verde-NUTES"> Ind. Card <div class="reis-hr"></div> </div>
+				  				<div class="reis-cor-preto text-center"> <span class="h6">${icg.indiceCardiaco}</span> ${icg.indiceCardiacoUnidade}</div>
+				  			</div>
+			  			</div>
+			  			<div class="panel-minifooter text-right"> 
+			  				${icg.dataHoraFormatada}
+			  			</div>	  			
+		  			</div>
+		  		</div>
 	  		</c:if>
 	  		
 	  		<c:if test="${balanca != null}">
@@ -127,7 +158,7 @@
 		  			<div class="panel panel-default">
 			  			<div class="panel-body h4-small">
 			  				<div class="col-md-6">
-			  					<div class="reis-verde-NUTES"> Pressão Arterial <div class="reis-hr"></div> </div>
+			  					<div class="reis-verde-NUTES"> PressÃ£o Arterial <div class="reis-hr"></div> </div>
 			  					<div class="reis-cor-preto text-center"> 
 			  						<span class="h6">${pressao.pressaoSistolica}/${pressao.pressaoDiastolica}</span> ${pressao.pressaoSistolicaUnidade}
 			  					</div>
