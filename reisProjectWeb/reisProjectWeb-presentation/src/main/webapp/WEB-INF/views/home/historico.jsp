@@ -66,7 +66,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="icg" varStatus="status" items="${historicoIcg}">
+									<c:forEach var="icg" varStatus="status" items="${historicoICG}">
 										<tr>
 											<td>${icg.dataHoraFormatada}</td>
 											<td>${icg.frequenciaCardiaca} ${icg.frequenciaCardiacaUnidade}</td>
